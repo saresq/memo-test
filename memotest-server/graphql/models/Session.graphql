@@ -1,0 +1,32 @@
+extend type Query {
+    "Get all Memotast"
+    sessions: [Session] @all
+
+    "Get Session By ID"
+    session(id:ID @eq): Session @find
+
+}
+
+extend type Mutation {
+    #...
+    createSession(memoTestId: Int!, retries: Int!, numberOfPairs: Int!, state: SessionState!, score: Int!): Session! @create
+    updateSession(id: ID!, retries: Int!): Session!
+    endSession(id: ID!): Session! @delete
+}
+
+type Session {
+  id: ID!
+  memotestId: Int!
+  retries: Int
+  numberOfPairs: Int
+  state: SessionState!
+  score: Int
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+
+enum SessionState {
+  STARTED
+  COMPLETED
+}
