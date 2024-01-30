@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('state');
             $table->integer('score');
             $table->timestamps();
+
+            $table->primary('id');
         });
     }
 

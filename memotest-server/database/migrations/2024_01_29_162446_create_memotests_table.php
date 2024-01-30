@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->json('images');
             $table->timestamps();
+
+            $table->primary('id');
         });
     }
 
