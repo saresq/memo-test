@@ -1,14 +1,14 @@
 import { API_GRAPHQL_URL } from "./lib/constants";
 import type { Memotest, Session } from "./types";
 
-const makeGraphQLRequest = async (query: string, variables: Record<string, any>, useCache: boolean = true): Promise<any> => {
+const makeGraphQLRequest = async (query: string, variables: Record<string, any>, useCache: boolean = false): Promise<any> => {
   const url: string = API_GRAPHQL_URL!;
   const headers = {
     'content-type': 'application/json',
   };
 
   const requestBody = { query, variables };
-  const options: RequestInit & { cache: string } = { method: 'POST', headers, body: JSON.stringify(requestBody), cache: 'no-store' };
+  const options: RequestInit & { cache: string } = { method: 'POST', headers, body: JSON.stringify(requestBody), cache: useCache ? 'default' : 'no-store'};
 
   const response = await fetch(url, options);
   const responseData = await response.json();
@@ -34,7 +34,7 @@ const api = {
       const data = await makeGraphQLRequest(query, {});
       return data.memotests;
     },
-    getImages: async (id: number): Promise<{ images: string[], name: string }> => {
+    getById: async (id: number): Promise<{ images: string[], name: string }> => {
       const query = `query GetMemotestImages ($id: ID!) {
                         memotest(id: $id) {
                           images
@@ -45,10 +45,34 @@ const api = {
       const variables = { id };
       const data = await makeGraphQLRequest(query, variables);
       return data.memotest;
-    }
+    },
+    removeImage: async (id: number, image: string): Promise<Session> => {
+      const query = `mutation RemoveImage($id: ID!, $image: String!) {
+                        removeImage(id: $id, image: $image) {
+                          images
+                          name
+                        }
+                      }`;
+
+      const variables = { id, image };
+      const data = await makeGraphQLRequest(query, variables);
+      return data.removeImage;
+    },
+    addImage: async (id: number, image: string): Promise<Session> => {
+      const query = `mutation AddImage($id: ID!, $image: String!) {
+                        addImage(id: $id, image: $image) {
+                          images
+                          name
+                        }
+                      }`;
+
+      const variables = { id, image };
+      const data = await makeGraphQLRequest(query, variables);
+      return data.addImage;
+    },
   },
   session: {
-    getSessionById: async (id: number): Promise<Session> => {
+    getById: async (id: number): Promise<Session> => {
       const query = `query GetSession ($id: ID!) {
                         session(id: $id) {
                           id
@@ -89,7 +113,7 @@ const api = {
                       }`;
 
       const variables = { id, retries };
-      const data = await makeGraphQLRequest(query, variables, false);
+      const data = await makeGraphQLRequest(query, variables);
       return data.updateSession;
     },
     saveGameState: async (id: number, gameState: string[]): Promise<Session> => {
@@ -101,7 +125,7 @@ const api = {
                       }`;
 
       const variables = { id, gameState };
-      const data = await makeGraphQLRequest(query, variables, false);
+      const data = await makeGraphQLRequest(query, variables);
       return data.updateSession;
     },
     endSession: async (id: number): Promise<Session> => {

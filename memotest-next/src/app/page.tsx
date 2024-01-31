@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 import api from "@/api";
 import { Memotest } from "@/types";
@@ -45,15 +46,20 @@ export default async function HomePage() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-4/6">Deck Name</TableHead>
-            <TableHead className="w-1/6 text-center">Highscore</TableHead>
-            <TableHead className="w-1/6 text-left">Actions</TableHead>
+            <TableHead className="w-4/6 text-xl">Deck Name</TableHead>
+            <TableHead className="w-1/6 text-xl text-center">Highscore</TableHead>
+            <TableHead className="w-1/6 text-xl text-left">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {memotests.map((memotest: Memotest) => (
             <TableRow key={memotest.id}>
-              <TableCell className="font-medium">{memotest.name}</TableCell>
+              <TableCell className="flex capitalize">
+                <Link href={`/edit/${memotest.id}`}>
+                  <img src="edit.png" className="w-6 h-6 mr-4 cursor-pointer" />
+                </Link>
+                {memotest.name}
+              </TableCell>
               <TableCell className="font-medium text-center">{scoreMap[memotest.id] ? scoreMap[memotest.id] : '-'}</TableCell>
               <TableCell className="text-center flex justify-right">
                 {/* Wordkaround for avoiding creating a client-component just to trigger 2 actions */}

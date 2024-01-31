@@ -14,7 +14,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <body className="dark geometric-background m-auto grid min-h-screen grid-rows-[auto,1fr,auto] font-sans antialiased">
-        <header className="text-xl font-mono font-bold leading-[4rem] flex items-center justify-center glass-red">
+        <header className="text-3xl font-mono font-bold leading-[4rem] flex items-center justify-center glass-red">
           <Image className="header-icon mr-4" src="/favicon.ico" width={32} height={32} alt="icon"/>
           <Link href="/">Memotest</Link>
         </header>

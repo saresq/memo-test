@@ -8,8 +8,8 @@ import Board from "@/components/board/Board";
 
 export default async function SolvePage({ params: { id, sessionId} }: { params: { id: number, sessionId: number } }) {
 
-  const { images, name } = await api.memoTest.getImages(id);
-  const session: Session = await api.session.getSessionById(sessionId)
+  const { images, name } = await api.memoTest.getById(id);
+  const session: Session = await api.session.getById(sessionId)
 
   const generateDeck = () => {
     const shuffledImages = [...images, ...images].sort(() => Math.random() - 0.5);

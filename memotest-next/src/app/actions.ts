@@ -18,3 +18,11 @@ export async function endSession(sessionId: number) {
   return await api.session.endSession(sessionId);
 }
 
+
+export async function removeImage(id: number, image: string) {
+  return await api.memoTest.removeImage(id, image);
+}
+
+export async function addImage(id: number, image: string) {
+  return await api.memoTest.addImage(id, image);
+}

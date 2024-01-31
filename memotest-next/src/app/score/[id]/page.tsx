@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export default async function ScorePage({ params: { id } }: { params: { id: number } }) {
 
-  const { score, retries } = await api.session.getSessionById(id);
+  const { score, retries } = await api.session.getById(id);
 
   return (
     <>
