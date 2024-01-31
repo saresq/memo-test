@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('numberOfPairs');
             $table->string('state');
             $table->integer('score');
+            $table->json('gameState');
             $table->timestamps();
 
             $table->primary('id');

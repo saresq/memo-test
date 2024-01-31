@@ -12,8 +12,8 @@ class MemotestFactory extends Factory
     public function definition()
     {
         $urls = [];
-        $randomId = rand(1, 1000);
         for ($i = 0; $i < 4; $i++) {
+            $randomId = rand(1, 1000);
             $urls[] = "https://picsum.photos/id/{$randomId}/200/300";
         }
 

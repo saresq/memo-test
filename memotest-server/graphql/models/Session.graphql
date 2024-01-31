@@ -1,17 +1,22 @@
 extend type Query {
-    "Get all Memotast"
-    sessions: [Session] @all
+  "Get all Memotast"
+  sessions: [Session] @all
 
-    "Get Session By ID"
-    session(id:ID @eq): Session @find
+  "Get Session By ID"
+  session(id: ID @eq): Session @find
 
+  "Get the session with status STARTED"
+  getStartedSessions: [Session]
+
+  "Get the highscores for each created memotest session."
+  getHighScores: [Session]
 }
 
 extend type Mutation {
-    #...
-    createSession(memoTestId: Int!, retries: Int!, numberOfPairs: Int!, state: SessionState!, score: Int!): Session! @create
-    updateSession(id: ID!, retries: Int!): Session!
-    endSession(id: ID!): Session! @delete
+  createSession(memotestId: Int!, numberOfPairs: Int!): Session!
+  updateSession(id: ID!, retries: Int!): Session!
+  endSession(id: ID!): Session!
+  saveGameState(id: ID!, gameState: [String]!): Session!
 }
 
 type Session {
@@ -23,10 +28,11 @@ type Session {
   score: Int
   created_at: DateTime!
   updated_at: DateTime!
+  gameState: [String]!
 }
-
 
 enum SessionState {
   STARTED
   COMPLETED
+  CANCELED
 }
