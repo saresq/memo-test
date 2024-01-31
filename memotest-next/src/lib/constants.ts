@@ -1,0 +1,5 @@
+export const API_GRAPHQL_URL = process.env.API_GRAPHQL_URL;
+
+export const SESSION_STATE_STARTED = 'STARTED';
+export const SESSION_STATE_COMPLETED = 'COMPLETED';
+export const SESSION_STATE_CANCELED = 'CANCELED';
