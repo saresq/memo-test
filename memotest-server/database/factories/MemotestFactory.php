@@ -12,10 +12,16 @@ class MemotestFactory extends Factory
     public function definition()
     {
         $urls = [];
+        $usedIds = [];
         for ($i = 0; $i < 4; $i++) {
-            $randomId = rand(10, 30);
+            do {
+                $randomId = rand(10, 30);
+            } while (in_array($randomId, $usedIds));
+            $usedIds[] = $randomId;
+
             $urls[] = "https://picsum.photos/id/{$randomId}/200/300";
         }
+
 
         return [
             'name' => $this->faker->word(),
