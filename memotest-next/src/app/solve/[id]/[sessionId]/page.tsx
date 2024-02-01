@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import api from "@/api";
 import { Session } from "@/types";
 import { endSession, saveGameState } from "@/app/actions";
-import Board from "@/components/board/Board";
+import GameBoard from "@/components/memotest/GameBoard";
 import MainMenuButton from "@/components/main-menu-button/MainMenuButton";
 
 
@@ -29,7 +29,7 @@ export default async function SolvePage({ params: { id, sessionId} }: { params: 
       <h1 className="pb-6 text-5xl tracking-tight tracking-tightscroll-m-20 text-center font-bold font-mono capitalize">
         Deck: {name}
       </h1>
-      <Board
+      <GameBoard
         session={session}
         deck={generateDeck()}
         handleEndGame={endGame}

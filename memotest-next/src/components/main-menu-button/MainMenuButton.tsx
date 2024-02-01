@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default async function MainMenuButton() {
+export default function MainMenuButton() {
 
   return (
     <Link href="/" className="hover:underline">

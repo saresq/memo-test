@@ -103,6 +103,17 @@ In case you dont have it copy same as .env but change to have this key
 
     php artisan db:seed --env=testing
 
+## Storybook
+In order to be able to see storybook, you need to run this command
+
+#####  If you are using npm
+
+    npm run storybook
+
+#####  If you are using pnpm
+
+    pnpm run storybook
+
 #
 #
 
