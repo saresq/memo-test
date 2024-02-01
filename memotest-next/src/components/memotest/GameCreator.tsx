@@ -78,7 +78,7 @@ export default function GameCreator({ handleCreate }: { handleCreate: Function }
                 />
               </span>
               <span className="w-1/5 mb-3">
-                <Button type="submit">Add</Button>
+                <Button className="bg-emerald-700 hover:bg-emerald-900 text-white" type="submit">Add</Button>
               </span>
             </div>
           </form>
@@ -107,7 +107,7 @@ export default function GameCreator({ handleCreate }: { handleCreate: Function }
         })}
       </div>
       <div className="text-center">
-        <Button onClick={() => handleCreateButtonClicked()} className="text-2xl my-6" disabled={images.length === 0 || inputName === ""}>Create Deck</Button>
+        <Button onClick={() => handleCreateButtonClicked()} className="text-2xl my-6 bg-emerald-500 hover:bg-emerald-700 disabled:bg-emerald-900 text-white" disabled={images.length === 0 || inputName === ""}>Create Deck</Button>
       </div>
     </>
 
