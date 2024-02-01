@@ -21,6 +21,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage() {
 
   const memotests = await api.memoTest.list();

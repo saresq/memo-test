@@ -1,14 +1,14 @@
 import { API_GRAPHQL_URL } from "./lib/constants";
 import type { Memotest, Session } from "./types";
 
-const makeGraphQLRequest = async (query: string, variables: Record<string, any>, useCache: boolean = false): Promise<any> => {
+const makeGraphQLRequest = async (query: string, variables: Record<string, any>): Promise<any> => {
   const url: string = API_GRAPHQL_URL!;
   const headers = {
     'content-type': 'application/json',
   };
 
   const requestBody = { query, variables };
-  const options: RequestInit & { cache: string } = { method: 'POST', headers, body: JSON.stringify(requestBody), cache: useCache ? 'default' : 'no-store'};
+  const options: RequestInit & { cache: string } = { method: 'POST', headers, body: JSON.stringify(requestBody), cache: 'no-store'};
 
   const response = await fetch(url, options);
   const responseData = await response.json();
