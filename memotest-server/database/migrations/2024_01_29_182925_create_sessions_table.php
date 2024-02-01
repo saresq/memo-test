@@ -20,8 +20,6 @@ return new class extends Migration
             $table->integer('score');
             $table->json('gameState');
             $table->timestamps();
-
-            $table->primary('id');
         });
     }
 
