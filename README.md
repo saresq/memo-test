@@ -51,7 +51,7 @@ Once inside run these commands:
 #####  If you run sail up without -d you should open a new tab and navigate into ./memotest-server to run these:
 
     sail php artisan migrate
-    sail php php artisan db:seed --class=MemotestSeeder
+    sail php artisan db:seed --class=MemotestSeeder
 
 **That's it for the backend**
 You can navigate to localhost:3001 and see the backend screen, or navigate to localhost:3001/graphiql for the GraphQL playground,
