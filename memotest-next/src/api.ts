@@ -26,8 +26,8 @@ const api = {
       const query = `query GetMemotestList{
                         memotests {
                           id
-                          images
                           name
+                          images
                         }
                       }`;
 
@@ -37,14 +37,37 @@ const api = {
     getById: async (id: number): Promise<{ images: string[], name: string }> => {
       const query = `query GetMemotestImages ($id: ID!) {
                         memotest(id: $id) {
-                          images
                           name
+                          images
                         }
                       }`;
 
       const variables = { id };
       const data = await makeGraphQLRequest(query, variables);
       return data.memotest;
+    },
+    createMemotest: async (name: string, images: string[]): Promise<Memotest> => {
+      const query = `mutation CreateMemotest($name: String!, $images: [String]!) {
+                      createMemotest(name: $name, images: $images) {
+                        id
+                        name
+                        images
+                      }
+                    }`;
+      const variables = { name, images };
+      const data = await makeGraphQLRequest(query, variables);
+      return data.createMemotest;
+    },
+    deleteMemotest: async (id: number): Promise<{ id: number}> => {
+      const query = `mutation DeleteMemotest($id: ID!) {
+                      deleteMemotest(id: $id) {
+                        id
+                      }
+                    }`;
+
+      const variables = { id };
+      const data = await makeGraphQLRequest(query, variables);
+      return data.deleteMemotest;
     },
     removeImage: async (id: number, image: string): Promise<Session> => {
       const query = `mutation RemoveImage($id: ID!, $image: String!) {

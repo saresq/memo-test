@@ -82,13 +82,13 @@ export default async function HomePage() {
                 <form action={handleNewGame}>
                   <input name="id" className="hidden" value={memotest.id} readOnly />
                   <input name="numberOfPairs" className="hidden" value={memotest.images.length} readOnly />
-                  <Button className="mr-4" type="submit">New Game</Button>
+                  <Button className="mr-4 bg-pink-700 text-white hover:bg-pink-900" type="submit">New Game</Button>
                 </form>
                 {idMap[memotest.id] && (
                   <form action={handleContinueGame}>
                     <input name="id" className="hidden" value={idMap[memotest.id]} readOnly />
                     <input name="memotestId" className="hidden" value={memotest.id} readOnly />
-                    <Button type="submit">Continue</Button>
+                    <Button className="bg-orange-700 hover:bg-orange-900 text-white" type="submit">Continue</Button>
                   </form>
                 )}
               </TableCell>
@@ -96,6 +96,11 @@ export default async function HomePage() {
           ))}
         </TableBody>
       </Table>
+      <div className="my-10 w-full text-center">
+        <Link href={`/create`}>
+          <Button className="bg-pink-700 text-white hover:bg-pink-900">Create New Deck</Button>
+        </Link>
+      </div>
     </div>
   );
 }

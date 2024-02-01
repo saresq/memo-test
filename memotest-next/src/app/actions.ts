@@ -10,7 +10,7 @@ export async function updateSession(sessionId: number, attempts: number) {
   return await api.session.updateSession(sessionId, attempts);
 }
 
-export async function saveGameState(id:number, guessed: string[]) {
+export async function saveGameState(id: number, guessed: string[]) {
   return await api.session.saveGameState(id, guessed);
 }
 
@@ -25,4 +25,12 @@ export async function removeImage(id: number, image: string) {
 
 export async function addImage(id: number, image: string) {
   return await api.memoTest.addImage(id, image);
+}
+
+export async function createMemotest(name: string, images: string[]) {
+  return await api.memoTest.createMemotest(name, images);
+}
+
+export async function deleteMemotest(id: number) {
+  return await api.memoTest.deleteMemotest(id);
 }

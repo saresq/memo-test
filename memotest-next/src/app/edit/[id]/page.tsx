@@ -1,24 +1,29 @@
 import Link from "next/link"
+import { redirect } from "next/navigation";
 
 import api from "@/api";
-
-import { addImage, removeImage } from "@/app/actions";
-import GameInfo from "@/components/game-info/GameInfo";
+import { addImage, deleteMemotest, removeImage } from "@/app/actions";
+import GameInfo from "@/components/memotest/GameEditor";
 
 export default async function EditPage({ params: { id } }: { params: { id: number } }) {
 
   const gameInfo = await api.memoTest.getById(id);
 
-  async function handleDelete(image: string) {
+  async function handleRemoveImage(image: string) {
     "use server"
     await removeImage(id, image);
   }
 
-  async function handleAdd(image: string) {
+  async function handleAddImage(image: string) {
     "use server"
     await addImage(id, image);
   }
 
+  async function handleDelete(image: string) {
+    "use server"
+    await deleteMemotest(id);
+    redirect('/');
+  }
 
   return (
     <>
@@ -26,14 +31,13 @@ export default async function EditPage({ params: { id } }: { params: { id: numbe
         <Link href="/" className="hover:underline">
           &#x3c; Return to Main Menu
         </Link>
-
-
           <GameInfo
             gameInfo={gameInfo}
+            handleRemoveImage={handleRemoveImage}
+            handleAddImage={handleAddImage}
             handleDelete={handleDelete}
-            handleAdd={handleAdd}
           />
-
+        <p className="text-center opacity-60">-- All changes are automatically saved --</p>
       </div>
     </>
   );
