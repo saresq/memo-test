@@ -4,6 +4,7 @@ import api from "@/api";
 import { Session } from "@/types";
 import { endSession, saveGameState } from "@/app/actions";
 import Board from "@/components/board/Board";
+import MainMenuButton from "@/components/main-menu-button/MainMenuButton";
 
 
 export default async function SolvePage({ params: { id, sessionId} }: { params: { id: number, sessionId: number } }) {
@@ -23,7 +24,8 @@ export default async function SolvePage({ params: { id, sessionId} }: { params: 
   }
 
   return (
-    <div className="glass py-9">
+    <div className="glass p-9">
+      <MainMenuButton />
       <h1 className="pb-6 text-5xl tracking-tight tracking-tightscroll-m-20 text-center font-bold font-mono capitalize">
         Deck: {name}
       </h1>

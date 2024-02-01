@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import api from "@/api";
 import { addImage, deleteMemotest, removeImage } from "@/app/actions";
 import GameInfo from "@/components/memotest/GameEditor";
+import MainMenuButton from "@/components/main-menu-button/MainMenuButton";
 
 export default async function EditPage({ params: { id } }: { params: { id: number } }) {
 
@@ -28,15 +29,13 @@ export default async function EditPage({ params: { id } }: { params: { id: numbe
   return (
     <>
       <div className="w-full m-auto p-9 glass font-mono">
-        <Link href="/" className="hover:underline">
-          &#x3c; Return to Main Menu
-        </Link>
-          <GameInfo
-            gameInfo={gameInfo}
-            handleRemoveImage={handleRemoveImage}
-            handleAddImage={handleAddImage}
-            handleDelete={handleDelete}
-          />
+        <MainMenuButton />
+        <GameInfo
+          gameInfo={gameInfo}
+          handleRemoveImage={handleRemoveImage}
+          handleAddImage={handleAddImage}
+          handleDelete={handleDelete}
+        />
         <p className="text-center opacity-60">-- All changes are automatically saved --</p>
       </div>
     </>

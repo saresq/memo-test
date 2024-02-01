@@ -3,6 +3,7 @@ import Link from "next/link"
 import { createMemotest } from "@/app/actions";
 import GameCreator from "@/components/memotest/GameCreator";
 import { redirect } from "next/navigation";
+import MainMenuButton from "@/components/main-menu-button/MainMenuButton";
 
 export default async function EditPage() {
 
@@ -16,9 +17,7 @@ export default async function EditPage() {
   return (
     <>
       <div className="w-full m-auto p-9 glass font-mono">
-        <Link href="/" className="hover:underline">
-          &#x3c; Return to Main Menu
-        </Link>
+        <MainMenuButton />
         <GameCreator
           handleCreate={handleCreate}
         />
