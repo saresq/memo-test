@@ -5,12 +5,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'picsum.photos',
-        protocol: '',
+        port: '',
       },
       {
         protocol: 'https',
         hostname: '**.picsum.photos',
-        protocol: '',
+        port: '',
       }
     ],
   },

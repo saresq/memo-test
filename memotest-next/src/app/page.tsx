@@ -14,6 +14,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export default async function HomePage() {
 
@@ -46,7 +52,7 @@ export default async function HomePage() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-4/6 text-xl">Deck Name</TableHead>
+            <TableHead className="w-4/6 text-xl pl-10">Deck Name</TableHead>
             <TableHead className="w-1/6 text-xl text-center">Highscore</TableHead>
             <TableHead className="w-1/6 text-xl text-left">Actions</TableHead>
           </TableRow>
@@ -56,7 +62,17 @@ export default async function HomePage() {
             <TableRow key={memotest.id}>
               <TableCell className="flex capitalize">
                 <Link href={`/edit/${memotest.id}`}>
-                  <img src="edit.png" className="w-6 h-6 mr-4 cursor-pointer" />
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <p className="font-extrabold mr-4 cursor-pointer"> &#x2699;</p>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Edit Deck Images</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+
                 </Link>
                 {memotest.name}
               </TableCell>
