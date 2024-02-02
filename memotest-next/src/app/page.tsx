@@ -21,16 +21,18 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export const dynamic = 'force-dynamic';
-
 export default async function HomePage() {
 
   const memotests = await api.memoTest.list();
   const startedSessions = await api.session.getStartedSessions();
   const highScores = await api.session.getHighScores();
 
-  const scoreMap: Record<number, string> = highScores.reduce((acc, session) => ({ ...acc, [session.memotestId]: session.score }), {});
-  const idMap: Record<number, number> = startedSessions.reduce((acc, session) => ({ ...acc, [session.memotestId]: session.id }), {});
+  const scoreMap: Record<number, string> = highScores.reduce(
+    (acc, session) => ({ ...acc, [session.memotestId]: session.score }), {}
+  );
+  const idMap: Record<number, number> = startedSessions.reduce(
+    (acc, session) => ({ ...acc, [session.memotestId]: session.id }), {}
+  );
 
   async function handleNewGame(formData: FormData) {
     "use server"
@@ -78,19 +80,33 @@ export default async function HomePage() {
                 </Link>
                 {memotest.name}
               </TableCell>
-              <TableCell className="font-medium text-center">{scoreMap[memotest.id] ? scoreMap[memotest.id] : '-'}</TableCell>
+              <TableCell 
+                className="font-medium text-center"
+              >
+                {scoreMap[memotest.id] ? scoreMap[memotest.id] : '-'}
+              </TableCell>
               <TableCell className="text-center flex justify-right">
                 {/* Wordkaround for avoiding creating a client-component just to trigger 2 actions */}
                 <form action={handleNewGame}>
                   <input name="id" className="hidden" value={memotest.id} readOnly />
                   <input name="numberOfPairs" className="hidden" value={memotest.images.length} readOnly />
-                  <Button className="mr-4 bg-pink-700 text-white hover:bg-pink-900" type="submit">New Game</Button>
+                  <Button 
+                    className="mr-4 bg-pink-700 text-white hover:bg-pink-900"
+                    type="submit"
+                  >
+                    New Game
+                  </Button>
                 </form>
                 {idMap[memotest.id] && (
                   <form action={handleContinueGame}>
                     <input name="id" className="hidden" value={idMap[memotest.id]} readOnly />
                     <input name="memotestId" className="hidden" value={memotest.id} readOnly />
-                    <Button className="bg-orange-700 hover:bg-orange-900 text-white" type="submit">Continue</Button>
+                    <Button
+                      className="bg-orange-700 hover:bg-orange-900 text-white"
+                      type="submit"
+                    >
+                      Continue
+                    </Button>
                   </form>
                 )}
               </TableCell>

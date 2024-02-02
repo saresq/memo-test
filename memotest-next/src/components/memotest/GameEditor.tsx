@@ -48,10 +48,15 @@ export default function GameEditor({ gameInfo, handleAddImage, handleRemoveImage
 
   return (
     <>
-      <h1 className="text-4xl my-9">Editing deck: <span className="capitalize">{gameInfo.name}</span></h1>
+      <h1 className="text-4xl my-9">
+        Editing deck: &nbsp;
+        <span className="capitalize">
+          {gameInfo.name}
+        </span>
+      </h1>
+
       <div className="w-full flex my-10">
         <div className="w-2/6">
-
           <h1 className="text-2xl ">Add image to deck</h1>
           <p className="mb-5 opacity-60 font-light">Please add 200x300 images</p>
         </div>
@@ -71,7 +76,12 @@ export default function GameEditor({ gameInfo, handleAddImage, handleRemoveImage
                 />
               </span>
               <span className="w-1/5 mb-3 ml-4">
-                <Button className="bg-emerald-700 hover:bg-emerald-900 text-white" type="submit">Add</Button>
+                <Button 
+                  className="bg-emerald-700 hover:bg-emerald-900 text-white"
+                  type="submit"
+                >
+                  Add
+                </Button>
               </span>
             </div>
           </form>
@@ -80,7 +90,10 @@ export default function GameEditor({ gameInfo, handleAddImage, handleRemoveImage
       <div className="grid grid-cols-4 gap-4 my-10">
         {images.map((image, index) => {
           return (
-            <div key={image + index} className="static flex flex-col gap-4 w-48 align-center justify-center items-center">
+            <div 
+              key={image + index}
+              className="static flex flex-col gap-4 w-48 align-center justify-center items-center"
+            >
               <Image
                 src={image}
                 alt="Memotest Card"
@@ -90,14 +103,18 @@ export default function GameEditor({ gameInfo, handleAddImage, handleRemoveImage
                 blurDataURL={blurDataURL}
                 className="w-48"
               />
-              <Button onClick={() => handleDeleteImageButtonClicked(image)} className="absolute bg-red-500 hover:bg-red-900 opacity-75 text-white-500"> Delete</Button>
+              <Button 
+                onClick={() => handleDeleteImageButtonClicked(image)}
+                className="absolute bg-red-500 hover:bg-red-900 opacity-75 text-white-500"
+              >
+                Delete
+              </Button>
             </div>
           )
         })}
       </div>
 
       <div className="text-right">
-
         <AlertDialog>
           <AlertDialogTrigger>
             <div className="bg-red-500 hover:bg-red-700 text-white rounded p-3">Delete deck</div>
@@ -106,7 +123,9 @@ export default function GameEditor({ gameInfo, handleAddImage, handleRemoveImage
             <AlertDialogHeader>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription>
-                This action cannot be undone.<br /> This will permanently delete <span className="capitalize">{gameInfo.name}</span> Deck.
+                This action cannot be undone.
+                <br />
+                This will permanently delete <span className="capitalize">{gameInfo.name}</span> Deck.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -116,8 +135,6 @@ export default function GameEditor({ gameInfo, handleAddImage, handleRemoveImage
           </AlertDialogContent>
         </AlertDialog>
       </div>
-
-
     </>
   );
 }

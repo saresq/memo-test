@@ -166,30 +166,28 @@ const api = {
       return data.updateSession;
     },
     getHighScores: async (): Promise<Session[]> => {
-      const query = `
-        query GetHighScores {
-          getHighScores {
-            id
-            memotestId
-            score
-          }
-        }
-      `;
+      const query = `query GetHighScores {
+                        getHighScores {
+                          id
+                          memotestId
+                          score
+                        }
+                      }
+                    `;
 
       const variables = {};
       const data = await makeGraphQLRequest(query, variables);
       return data.getHighScores;
     },
     getStartedSessions: async (): Promise<Session[]> => {
-      const query = `
-        query GetStartedSessions {
-          getStartedSessions {
-            id
-            memotestId
-            retries
-          }
-        }
-      `;
+      const query = `query GetStartedSessions {
+                        getStartedSessions {
+                          id
+                          memotestId
+                          retries
+                        }
+                      }
+                    `;
 
       const variables = {};
       const data = await makeGraphQLRequest(query, variables);

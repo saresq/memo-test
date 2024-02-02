@@ -78,7 +78,12 @@ export default function GameCreator({ handleCreate }: { handleCreate: Function }
                 />
               </span>
               <span className="w-1/5 mb-3">
-                <Button className="bg-emerald-700 hover:bg-emerald-900 text-white" type="submit">Add</Button>
+                <Button
+                  className="bg-emerald-700 hover:bg-emerald-900 text-white"
+                  type="submit"
+                >
+                  Add
+                </Button>
               </span>
             </div>
           </form>
@@ -91,7 +96,10 @@ export default function GameCreator({ handleCreate }: { handleCreate: Function }
       <div className="grid grid-cols-4 gap-4 my-10">
         {images.map((image, index) => {
           return (
-            <div key={image + index} className="static flex flex-col gap-4 w-48 align-center justify-center items-center">
+            <div 
+              key={image + index}
+              className="static flex flex-col gap-4 w-48 align-center justify-center items-center"
+            >
               <Image
                 src={image}
                 alt="Memotest Card"
@@ -101,15 +109,25 @@ export default function GameCreator({ handleCreate }: { handleCreate: Function }
                 blurDataURL={blurDataURL}
                 className="w-48"
               />
-              <Button onClick={() => handleDeleteButtonClicked(image)} className="absolute bg-red-500 hover:bg-red-900 opacity-75 text-white-500">Delete</Button>
+              <Button 
+                onClick={() => handleDeleteButtonClicked(image)}
+                className="absolute bg-red-500 hover:bg-red-900 opacity-75 text-white-500"
+              >
+                Delete
+              </Button>
             </div>
           );
         })}
       </div>
       <div className="text-center">
-        <Button onClick={() => handleCreateButtonClicked()} className="text-2xl my-6 bg-emerald-500 hover:bg-emerald-700 disabled:bg-emerald-900 text-white" disabled={images.length === 0 || inputName === ""}>Create Deck</Button>
+        <Button
+          onClick={() => handleCreateButtonClicked()}
+          className="text-2xl my-6 bg-emerald-500 hover:bg-emerald-700 disabled:bg-emerald-900 text-white"
+          disabled={images.length === 0 || inputName === ""}
+        >
+          Create Deck
+        </Button>
       </div>
     </>
-
   );
 }
