@@ -17,8 +17,9 @@ In order to be able to setup this project in your local machine you will need
 
 **Create .env**
 
-Create a copy of **.env.example** and name it **.env**, since this is not yet production ready, all the keys needed are already uploaded inside the example, you wont need to ask for keys or credentials
-#####  *[THIS IS ONLY FOR EASE OF USE - ONCE APPROVED AND DEPLOY READY THIS WILL NO LONGER BE THE CASE]*
+Create a copy of **.env.example** and name it **.env**, since this is not yet production ready, all the keys needed are already uploaded inside the example.
+You wont need to ask for keys or credentials. *[THIS IS ONLY FOR EASE OF USE - ONCE APPROVED AND DEPLOY READY THIS WILL NO LONGER BE THE CASE]*
+
 
 **Run Containers**
 
