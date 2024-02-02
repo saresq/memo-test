@@ -5,12 +5,10 @@ namespace Database\Factories;
 use App\Models\Memotest;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MemotestFactory extends Factory
-{
+class MemotestFactory extends Factory {
     protected $model = Memotest::class;
 
-    public function definition()
-    {
+    public function definition() {
         $urls = [];
         $usedIds = [];
         for ($i = 0; $i < 4; $i++) {

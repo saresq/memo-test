@@ -4,13 +4,11 @@ extend type Query {
 
     "Get Memotest By ID"
     memotest(id:ID @eq): Memotest @find
-
 }
 
 extend type Mutation {
     createMemotest(name: String!, images: [String]!): Memotest! @create
     deleteMemotest(id: ID! @eq): Memotest @delete
-
     addImage(id: ID!, image: String!): Memotest!
     removeImage(id: ID!, image: String!): Memotest!
 }

@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Session extends Model
-{
+class Session extends Model {
     const STATUS_STARTED = 'STARTED';
     const STATUS_COMPLETED = 'COMPLETED';
     const STATUS_CANCELED = 'CANCELED';

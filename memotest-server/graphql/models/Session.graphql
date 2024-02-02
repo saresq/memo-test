@@ -1,5 +1,5 @@
 extend type Query {
-  "Get all Memotast"
+  "Get all Memotest"
   sessions: [Session] @all
 
   "Get Session By ID"
